@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Four Sites · 四个设计感网站</title>
+<meta name="description" content="四个风格迥异、交互丰富的单文件网站：暗夜数字工作室、瑞士风设计杂志、有机茶饮品牌、新粗野主义音乐节。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Four Sites · 四个设计感网站">
+<meta property="og:description" content="四个风格迥异、交互丰富的单文件网站：暗夜数字工作室、瑞士风设计杂志、有机茶饮品牌、新粗野主义音乐节。">
+<meta property="og:image" content="https://techventor.github.io/design-showcase/previews/nocturne.jpg">
+<meta property="og:url" content="https://techventor.github.io/design-showcase/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* gallery wall: quiet neutral ground, each card tints the room when hovered */
+:root{--ground:#efeeea;--ink:#161616;--mute:#6f6d67;--line:rgba(22,22,22,.12);--paper:rgba(255,255,255,.6);--pad:clamp(18px,4vw,64px);--out:cubic-bezier(.16,1,.3,1)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:var(--ground)}
+body{min-height:100vh;font-family:'Inter Tight','Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;color:var(--ink);background:var(--tint,var(--ground));transition:background-color .9s var(--out);-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+.mono{font-family:'JetBrains Mono',Consolas,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.serif{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400}
+.top{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px var(--pad) 0;color:var(--mute)}
+.top a{border-bottom:1px solid currentColor;padding-bottom:2px;transition:color .3s}
+.top a:hover{color:var(--ink)}
+.hero{display:grid;grid-template-columns:1.35fr 1fr;gap:40px;align-items:end;padding:9vh var(--pad) 7vh}
+h1{font-size:clamp(56px,9.2vw,156px);font-weight:800;line-height:.86;letter-spacing:-.05em;text-wrap:balance}
+h1 .serif{letter-spacing:-.02em}
+h1 span{display:inline-block;animation:rise 1.2s var(--out) both}
+h1 span:nth-child(2){animation-delay:.08s}h1 span:nth-child(3){animation-delay:.16s}
+@keyframes rise{from{opacity:0;transform:translateY(40%)}}
+.intro{font-size:16px;line-height:1.9;color:#3b3a36;max-width:34em}
+.intro b{font-weight:600}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;color:var(--mute)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,2.6vw,40px);padding:0 var(--pad) 10vh}
+.card{position:relative;display:flex;flex-direction:column;gap:14px;padding:14px 14px 22px;border-radius:20px;background:var(--paper);border:1px solid var(--line);transition:transform .8s var(--out),box-shadow .6s var(--out),border-color .4s;animation:rise 1.1s var(--out) both;animation-delay:calc(.25s + var(--i)*.09s)}
+.card:hover{transform:translateY(-6px);box-shadow:0 40px 70px -40px rgba(0,0,0,.45);border-color:transparent}
+.shot{position:relative;aspect-ratio:16/10;border-radius:12px;overflow:hidden;background:var(--ac)}
+.shot img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--out),filter .6s}
+.card:hover .shot img{transform:scale(1.05)}
+.shot::after{content:'';position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.go{position:absolute;left:0;top:0;width:96px;height:96px;margin:-48px 0 0 -48px;border-radius:50%;display:grid;place-items:center;background:var(--ac);color:var(--on);font-weight:700;font-size:14px;pointer-events:none;transform:scale(0);transition:transform .45s var(--out);z-index:2}
+.shot:hover .go{transform:scale(1)}
+.meta{display:flex;align-items:baseline;gap:14px;padding:0 6px}
+.meta .mono{color:var(--mute)}
+.meta h2{font-size:clamp(26px,2.6vw,40px);font-weight:800;letter-spacing:-.035em;line-height:1}
+.arrow{margin-left:auto;font-size:26px;transition:transform .6s var(--out)}
+.card:hover .arrow{transform:rotate(45deg)}
+.cn{padding:0 6px;font-size:15px;color:#3b3a36}
+.tags{display:flex;flex-wrap:wrap;gap:6px;padding:0 6px;list-style:none}
+.tags li{padding:6px 10px;border:1px solid var(--line);border-radius:100px;background:rgba(255,255,255,.55)}
+.swatch{display:flex;gap:5px;margin-left:6px}
+.swatch i{width:14px;height:14px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:28px var(--pad) 40px;border-top:1px solid var(--line);color:var(--mute)}
+.foot a{color:var(--ink);border-bottom:1px solid currentColor}
+:focus-visible{outline:2px solid var(--ink);outline-offset:4px;border-radius:6px}
+@media (max-width:860px){.hero,.grid{grid-template-columns:1fr}.top .mono:last-child{display:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top mono"><span>Design Showcase · 2026</span><a href="https://github.com/Techventor/design-showcase">Source on GitHub ↗</a></header>
+
+<section class="hero">
+  <h1><span>Four sites,</span><br><span class="serif">four</span> <span>moods.</span></h1>
+  <div>
+    <p class="intro">四个风格完全不同的网站，每一个都是<b>单个 HTML 文件</b>：不用框架，不需要构建，原生 HTML、CSS、JavaScript 手写完成。WebGL 着色器、CSS 3D、Canvas、Web Audio 和 View Transitions 都用上了。点开任意一张卡片，动动鼠标，点一点、拖一拖。</p>
+    <div class="legend mono"><span>Best on desktop Chrome / Edge</span><span>声音需先点击页面</span></div>
+  </div>
+</section>
+
+<main class="grid" id="grid">
+  <a class="card" href="nocturne/" style="--i:0;--ac:#c8ff3e;--on:#000;--tint:#e3e3e8">
+    <div class="shot"><img src="previews/nocturne.jpg" alt="NOCTURNE 首页：紫绿色流体背景上的巨大 NOCTURNE 字样" width="720" height="450"><span class="go">打开 ↗</span></div>
+    <div class="meta"><span class="mono">01</span><h2>NOCTURNE</h2><span class="swatch"><i style="background:#060608"></i><i style="background:#c8ff3e"></i><i style="background:#6b3cff"></i></span><span class="arrow">↗</span></div>
+    <p class="cn">暗夜数字工作室 · Dark cinematic studio</p>
+    <ul class="tags mono"><li>WebGL 流体着色器</li><li>惯性滚动</li><li>横向作品区</li><li>案例全屏展开</li><li>磁吸光标</li></ul>
+  </a>
+  <a class="card" href="forma/" style="--i:1;--ac:#ff3b00;--on:#fff;--tint:#efe5de">
+    <div class="shot"><img src="previews/forma.jpg" alt="FORMA 杂志首页：巨大的 FORMA 刊名与包豪斯几何封面" width="720" height="450"><span class="go">打开 ↗</span></div>
+    <div class="meta"><span class="mono">02</span><h2>FORMA Nº07</h2><span class="swatch"><i style="background:#efece4"></i><i style="background:#121212"></i><i style="background:#ff3b00"></i></span><span class="arrow">↗</span></div>
+    <p class="cn">瑞士风设计杂志 · Swiss editorial</p>
+    <ul class="tags mono"><li>十字准线光标</li><li>可重组封面</li><li>列表 / 网格切换</li><li>滚动构成点线面</li><li>字体样张</li></ul>
+  </a>
+  <a class="card" href="shanlan/" style="--i:2;--ac:#6f8f3e;--on:#fff;--tint:#e5eadb">
+    <div class="shot"><img src="previews/shanlan.jpg" alt="山岚茶饮首页：绿色 3D 茶罐与晕开的茶墨" width="720" height="450"><span class="go">打开 ↗</span></div>
+    <div class="meta"><span class="mono">03</span><h2>山岚 Shanlan</h2><span class="swatch"><i style="background:#6f8f3e"></i><i style="background:#94603a"></i><i style="background:#d0705f"></i></span><span class="arrow">↗</span></div>
+    <p class="cn">有机茶饮品牌 · Organic tea brand</p>
+    <ul class="tags mono"><li>鼠标搅动茶墨</li><li>3D 茶罐</li><li>圆形换色过渡</li><li>茶汤注满文字</li><li>冲泡动画</li></ul>
+  </a>
+  <a class="card" href="echo/" style="--i:3;--ac:#ff5ca8;--on:#111;--tint:#e2e2f7">
+    <div class="shot"><img src="previews/echo.jpg" alt="ECHO FEST 首页：蓝色网格背景上的彩色 ECHO 字母和贴纸" width="720" height="450"><span class="go">打开 ↗</span></div>
+    <div class="meta"><span class="mono">04</span><h2>ECHO FEST ’27</h2><span class="swatch"><i style="background:#3d3bff"></i><i style="background:#ffd93b"></i><i style="background:#ff5ca8"></i></span><span class="arrow">↗</span></div>
+    <p class="cn">新粗野主义音乐节 · Neo-brutalist festival</p>
+    <ul class="tags mono"><li>物理贴纸</li><li>翻牌倒计时</li><li>可演奏鼓机</li><li>艺人试听</li><li>镭射门票</li></ul>
+  </a>
+</main>
+
+<footer class="foot mono"><span>All four are fictional brands made for a design demo · 均为虚构品牌，仅作设计演示</span><a href="https://github.com/Techventor/design-showcase">github.com/Techventor/design-showcase</a></footer>
+
+<script>
+document.querySelectorAll('.card').forEach(c=>{
+  const go=c.querySelector('.go'),shot=c.querySelector('.shot');
+  c.addEventListener('pointerenter',()=>document.body.style.setProperty('--tint',c.style.getPropertyValue('--tint')));
+  c.addEventListener('pointerleave',()=>document.body.style.removeProperty('--tint'));
+  shot.addEventListener('pointermove',e=>{const r=shot.getBoundingClientRect();go.style.left=(e.clientX-r.left)+'px';go.style.top=(e.clientY-r.top)+'px'});
+});
+</script>
+</body>
+</html>
